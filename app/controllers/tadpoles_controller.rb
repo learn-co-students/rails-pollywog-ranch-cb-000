@@ -4,7 +4,13 @@ class TadpolesController < ApplicationController
   # add your metamorphosize action here
 
   def metamorphosize
-    redirect_to @tadpole.metamorphosize
+    frog = @tadpole.metamorphosize
+
+    if frog
+      redirect_to frog
+    else
+      render :show
+    end
   end
 
   def index

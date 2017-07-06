@@ -4,7 +4,11 @@ class Tadpole < ActiveRecord::Base
   delegate :pond, to: :frog, allow_nil: true
 
   def metamorphosize
-    tadpole = destroy
-    Frog.create(name: tadpole.name, color: tadpole.color, pond: tadpole.pond)
+    frog = Frog.new(name: name, color: color, pond: pond)
+
+    if frog.save
+      destroy
+      frog
+    end
   end
 end
