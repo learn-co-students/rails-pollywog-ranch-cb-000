@@ -1,0 +1,12 @@
+<%= form_for @tadpole, url: metamorphose_tadpole_path do |f| %>
+
+<div class="field">
+  <%= f.label :name %><br>
+  <%= f.text_field :name %></div>
+
+<div class="field"><%= f.label :color, "Color" %><br>
+  <%= f.text_field :color %></div>
+
+<div class="actions"><%= f.submit 'Become a frog',  :class => 'btn btn-primary' %></div>
+
+<% end %>
