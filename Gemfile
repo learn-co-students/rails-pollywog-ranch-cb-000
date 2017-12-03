@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -46,6 +46,7 @@ group :test, :development do
   gem "guard-rspec", require: false
   gem "thin", '~> 1.6.4'
   gem 'launchy', '~> 2.4.3'
+  gem 'byebug'
 end
 
 group :production do
