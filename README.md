@@ -1,3 +1,31 @@
+Starting with 14 tests failing
+Gameplan:
+g migrations
+add assocations in models
+add #metamorphose to tadpoles_controller
+in config routes all a form to post to /tadpoles/:id/metamorphose; should route to TadpolesController's #metamorphose action
+add form to views/tadpoles/show.html.erb that will post to /tadpoles/:id/metamorphose with a submit button that reads "Become a frog"
+
+Migrations:
+frog name:string color:string
+belongs_to pond
+has_many tadpoles
+
+pond name:string water_type:string
+has_many :frogs
+has_many :tadpoles, through: :frogs ##(delegate)
+
+tadpole name:string color:string
+belongs_to :frog
+belongs_to :pond, through: :frog
+
+rails g migration frogs name:string color:string --no-test-framework
+rails g migration ponds --no-test-framework
+rails g migration tadpoles --no-test-framework
+
+
+
+
 # Rails Pollywog Ranch Lab
 
 ![tadpoles and frogs](https://raw.githubusercontent.com/learn-co-curriculum/rails-pollywog-ranch/master/app/assets/images/intro-image.jpeg)
