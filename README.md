@@ -20,9 +20,28 @@ belongs_to :frog
 belongs_to :pond, through: :frog
 
 rails g migration frogs name:string color:string --no-test-framework
-rails g migration ponds --no-test-framework
-rails g migration tadpoles --no-test-framework
+rails g migration ponds name:string water_type: string --no-test-framework
+rails g migration tadpoles name:string color:string --no-test-framework
 
+<%= form_for( @tadpole, :url => root_path), do |f| %>
+  another form option
+  <%= f.submit "Try this one"
+  <% end %>
+
+
+<p><a href="/tadpoles/<%= @tadpole.id %>/metamorphose" method="post" class="btn btn-primary" id="Become a frog">Become a frog</a></p>
+
+<%= form_for( @tadpole, :url => tadpole_path( @tadpole), :html => { :method => :post } ) do |f| %>
+    Are you sure you wish to close this message?<br>
+    <%= f.submit "Close Message" %>
+<% end %>
+This form is going to be posted to "/messages/ID_HERE/close" and Rails is going to set the "ID_HERE" value as the "id" parameter on your request.
+
+
+
+<%= link_to "This way to frog", root_path('metamorphose'), method: :post %>
+  <%= link_to "This way to frog", tadpole_path(id: '#{@tadpole}metamorphose'), method: :post %>
+  redirect_to root_path(:registered => "true")
 
 
 
