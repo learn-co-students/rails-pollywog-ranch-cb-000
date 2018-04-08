@@ -40,6 +40,16 @@ class TadpolesController < ApplicationController
     end
   end
 
+  def metamorphose
+	  if !@tadpole.nil?
+		  @frog = Frog.create(name: @tadpole.name, color: @tadpole.color, pond: @tadpole.pond)
+		  @tadpole.destroy
+		  redirect_to frog_path(@frog)
+	  else
+		  redirect_to tadpoles_path, alert: "That's not a tadpole."
+	  end
+  end
+
   def destroy
     @tadpole.destroy
     respond_to do |format|
