@@ -2,6 +2,20 @@
   <h1><%= @tadpole.name %> the Tadpole</h1>
 
   <!-- make form to make "Become a frog" button here -->
+  <p>
+    <%= form_for(metamorphose_path(@tadpole)) do |f| %>
+      <%= f.submit "Become a frog", :class => 'btn btn-primary' %>
+    <% end %>
+    <%= button_to "Become a Frog", metamorphose_path(@tadpole), method: :post, :class => 'btn btn-primary' %>
+    <%= button_to 'Become a Frog', {:controller => "tadpoles", :action => "metamorphose", :method=>:post  %>
+    <form action="<%= metamorphose_path(@tadpole)%>"  method="post">
+      <input type="submit" value="Become a Frog" />
+    </form>
+  </p>
+
+
+
+
   <!-- the form should post to /tadpoles/:id/metamorphose -->
 
   <p>Color: <%= @tadpole.color %></p>
