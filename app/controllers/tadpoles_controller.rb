@@ -40,6 +40,16 @@ class TadpolesController < ApplicationController
     end
   end
 
+  def metamorphose
+    tadpole = set_tadpole
+    @frog = tadpole.pond.frogs.build(name: tadpole.name, color: tadpole.color)
+    if @frog.save
+      tadpole.destroy
+      redirect_to @frog
+    end
+  end
+  
+
   def destroy
     @tadpole.destroy
     respond_to do |format|
