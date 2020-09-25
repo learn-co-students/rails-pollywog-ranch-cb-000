@@ -3,6 +3,18 @@ class TadpolesController < ApplicationController
 
   # add your metamorphose action here
 
+  def metamorphose
+    frog = Frog.new(name: @tadpole.name, color: @tadpole.color, pond: @tadpole.pond)
+    
+
+    if frog.save
+      @tadpole.destroy
+      redirect_to frog, alert: "#{frog.name} the Tadpole succesfully became a frog."
+    else
+      render :show
+    end
+  end
+
   def index
     @tadpoles = Tadpole.all
   end
